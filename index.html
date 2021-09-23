@@ -2,24 +2,33 @@
 <html>
   <head>
     <link rel='stylesheet' href='styles.css'>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Montserrat&family=Scheherazade+New&display=swap" rel="stylesheet">
     <title>Spooky Tic Tac Toe</title>
   </head>
   <body>
     <main>
-      <section>
+      <section class='left-side'>
         <h1>🎃</h1>
         <h2>2 wins</h2>
       </section>
-      <section>
+      <section class='middle'>
         <section>
-          <h1>👻 won!</h1>
+          <h1 class='winner-message'>👻 won!</h1>
         </section>
-        <section>
+        <section class ='game-board'>
        <!-- tic tac toe grid -->
+          <div class='box remove-left-border remove-top-border'></div>
+          <div class='box remove-top-border'></div>
+          <div class='box remove-right-border remove-top-border'></div>
+          <div class='box remove-left-border'></div>
+          <div class='box'></div>
+          <div class='box remove-right-border'></div>
+          <div class='box remove-left-border remove-bottom-border'></div>
+          <div class='box remove-bottom-border'></div>
+          <div class='box remove-right-border remove-bottom-border'></div>
         </section>
       </section>
-      <section>
+      <section class='right-side'>
         <h1>👻</h1>
         <h2>3 wins</h2>
       </section>
