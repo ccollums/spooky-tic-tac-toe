@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-  this.player1 = new Player(one, pumpkin);
-  this.player2 = new Player(two, ghost);
+  this.player1 = new Player(1, 'pumpkin');
+  this.player2 = new Player(2, 'ghost');
   this.turn = this.player1;
   this.board = [];
   this.isAWin = false;
