@@ -1,0 +1,90 @@
+* {
+  font-family: 'Creepster', cursive;
+  /* border: solid 2px black; */
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 300%;
+  margin: 30% 0 0 0;
+  padding: 0;
+}
+h2 {
+  font-size: 500%;
+  margin: 0;
+  padding: 0;
+}
+
+.winner-message  {
+  font-size: 700%;
+  margin: 0
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  height: 100vh;
+  background-color: dimgrey;
+  color: white;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  height: 100vh;
+  background-color: darkorange;
+  color: white;
+}
+
+.game-board {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  height: 80%;
+  width: 80%;
+  margin: 6%
+}
+
+.box {
+  border: solid 6px black;
+  height: auto:
+  width:auto;
+}
+
+.remove-left-border {
+  border-left: 2px solid transparent;
+}
+
+.remove-right-border {
+  border-right: 2px solid transparent;
+}
+
+.remove-bottom-border {
+  border-bottom: 2px solid transparent;
+}
+
+.remove-top-border {
+  border-top: 2px solid transparent;
+}
