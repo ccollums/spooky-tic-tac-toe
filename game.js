@@ -5,8 +5,8 @@ class Game {
   this.turn = this.player1;
   this.boardPlayer1 = [];
   this.boardPlayer2 = [];
-  // this.board = [];
   this.isAWin = false;
+  this.wins = [];
   this.draw = false;
   this.winner = null;
   }
@@ -73,21 +73,29 @@ class Game {
     }
   }
 
-  checkForWinner() {
-    this.winningBoards()
-    if (this.isAWin === true) {
-      this.winner = this.turn;
-      this.addToPlayerWins();
-      this.winner.saveWinsToStorage(this.winner);
-      console.log('player1', this.player1.wins);
-      console.log('player2', this.player2.wins);
+  isADraw() {
+    console.log(this.draw)
+    if (this.boardPlayer1.length === 5 || this.boardPlayer2.length === 5) {
+      this.draw = true;
     }
   }
 
-  stopGame() {
-    if (this.winner === this.player1 || this.winner === this.player2) {
-
+  checkForWinner() {
+    this.winningBoards()
+    this.isADraw();
+    if (this.isAWin === true) {
+      this.winner = this.turn;
+      this.addToPlayerWins();
+      this.wins.push(this.winner);
+      this.winner.saveWinsToStorage();
+    }
   }
 
-}
+
+  stopGameBoard() {
+    if (game.winner === game.player1 || game.winner === game.player2) {
+      setTimeout(function() {console.log('hi')}, 500);
+    }
+  }
+
 }
