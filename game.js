@@ -60,21 +60,8 @@ class Game {
     this.verticalWins();
     this.diagonalWins();
   }
-  // boardDraw() {
-  //   if (this.board.includes(1,2,3,4,5,6,7,8,9)) {
-  //     this.draw = true;
-  //   }
-  // }
-  addToPlayerWins() {
-    if (this.player1 === this.winner) {
-      this.player1.wins.push(1);
-    } else if (this.player2 === this.winner) {
-      this.player2.wins.push(1);
-    }
-  }
 
   isADraw() {
-    console.log(this.draw)
     if (this.boardPlayer1.length === 5 || this.boardPlayer2.length === 5) {
       this.draw = true;
     }
@@ -87,14 +74,15 @@ class Game {
       this.winner = this.turn;
       this.addToPlayerWins();
       this.wins.push(this.winner);
-      this.winner.saveWinsToStorage();
+      this.winner.saveWinsToStorage(this.wins);
     }
   }
 
-
-  stopGameBoard() {
-    if (game.winner === game.player1 || game.winner === game.player2) {
-      setTimeout(function() {console.log('hi')}, 500);
+  addToPlayerWins() {
+    if (this.player1 === this.winner) {
+      this.player1.wins.push(1);
+    } else if (this.player2 === this.winner) {
+      this.player2.wins.push(1);
     }
   }
 

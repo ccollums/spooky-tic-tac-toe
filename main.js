@@ -11,6 +11,7 @@ var box6 = document.getElementById('boxSix');
 var box7 = document.getElementById('boxSeven');
 var box8 = document.getElementById('boxEight');
 var box9 = document.getElementById('boxNine');
+var winner = document.getElementById('winnerMessage');
 
 // EventListeners
 gameBoard.addEventListener('click', placeToken);
@@ -20,58 +21,31 @@ gameBoard.addEventListener('click', placeToken);
 function placeToken(event) {
   if (event.target.classList.contains('1')) {
     playerboardToSave(1);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('2')) {
     playerboardToSave(2);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('3')) {
     playerboardToSave(3);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('4')) {
     playerboardToSave(4);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('5')) {
     playerboardToSave(5);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('6')) {
     playerboardToSave(6);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('7')) {
     playerboardToSave(7);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('8')) {
     playerboardToSave(8);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   } else if (event.target.classList.contains('9')) {
     playerboardToSave(9);
-    game.checkForWinner();
-    // stopGameBoard();
-    clearBoard();
-    tokenToBePlaced();
+    onClickOfbox();
   }
 }
 
@@ -94,7 +68,6 @@ function playerboardToSave(boxNumber) {
 }
 
 function emptyBoard() {
-  console.log('hi')
   box1.innerHTML = ``;
   box2.innerHTML = ``;
   box3.innerHTML = ``;
@@ -106,21 +79,30 @@ function emptyBoard() {
   box9.innerHTML = ``;
 }
 
+function clearGameData() {
+  game.turn = game.player1;
+  game.boardPlayer1 = [];
+  game.boardPlayer2 = [];
+  game.isAWin = false;
+  game.draw = false;
+  game.winner = null;
+}
+
 function clearBoard() {
   if (game.draw === true || game.winner === game.player1 || game.winner === game.player2) {
     setTimeout(emptyBoard, 500);
-    game.boardPlayer1 = [];
-    game.boardPlayer2 = [];
-    game.isAWin = false;
-    game.draw = false;
-    game.winner = null;
-    game.turn = game.player1;
+    clearGameData();
   }
 }
-//
-// function stopGameBoard() {
-//   console.log(game.winner)
+
+function onClickOfbox() {
+  game.checkForWinner();
+  tokenToBePlaced();
+  clearBoard();
+}
+
+// function updateWinnerOnPage() {
 //   if (game.winner === game.player1 || game.winner === game.player2) {
-//     setTimeout(function() {console.log('hi')}, 500);
+//     winner.innerHTML += `<h1 class='winner-message'>${game.winner} won!</h1>`;
 //   }
 // }
