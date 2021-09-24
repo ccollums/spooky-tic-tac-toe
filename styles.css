@@ -68,6 +68,9 @@ h2 {
 }
 
 .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid 6px black;
   height: auto:
   width:auto;
@@ -87,4 +90,9 @@ h2 {
 
 .remove-top-border {
   border-top: 2px solid transparent;
+}
+
+.token {
+  margin: 0;
+  font-size: 100px;
 }
