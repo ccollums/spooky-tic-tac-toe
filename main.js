@@ -14,9 +14,17 @@ var box9 = document.getElementById('boxNine');
 var winner = document.getElementById('winnerMessage');
 
 // EventListeners
+window.addEventListener('load', onPageLoad);
 gameBoard.addEventListener('click', placeToken);
 
+function onPageLoad() {
+  var retrievedWins = localStorage.getItem("savedWins");
+  var parsedWins = JSON.parse(retrievedWins);
+  var stringifiedWins = JSON.stringify(parsedWins);
+  localStorage.setItem("savedWins", stringifiedWins);
 
+  // game.wins.push(parsedWins);
+}
 
 function placeToken(event) {
   if (event.target.classList.contains('1')) {
@@ -94,15 +102,30 @@ function clearBoard() {
     clearGameData();
   }
 }
+function clearMessage() {
+  winner.innerText = `It's 🎃's' turn!`;
+}
 
 function onClickOfbox() {
   game.checkForWinner();
   tokenToBePlaced();
+  updateTurnMessage();
+  updateWinnerOnPage();
   clearBoard();
 }
 
-// function updateWinnerOnPage() {
-//   if (game.winner === game.player1 || game.winner === game.player2) {
-//     winner.innerHTML += `<h1 class='winner-message'>${game.winner} won!</h1>`;
-//   }
-// }
+function updateTurnMessage() {
+  if (game.winner === null) {
+    winner.innerText = `It's ${game.turn.token}'s turn!'`
+  }
+}
+
+function updateWinnerOnPage() {
+    if (game.winner === game.player1) {
+      winner.innerText = `${game.player1.token} won!`
+      setTimeout(clearMessage, 1000);
+    } else if (game.winner === game.player2) {
+      winner.innerHTML = `${game.player2.token} won!`;
+      setTimeout(clearMessage, 1000);
+    }
+  }

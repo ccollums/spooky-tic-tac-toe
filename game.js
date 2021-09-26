@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-  this.player1 = new Player(1, 'pumpkin');
-  this.player2 = new Player(2, 'ghost');
+  this.player1 = new Player(1, '🎃');
+  this.player2 = new Player(2, '👻');
   this.turn = this.player1;
   this.boardPlayer1 = [];
   this.boardPlayer2 = [];
@@ -70,13 +70,19 @@ class Game {
   checkForWinner() {
     this.winningBoards()
     this.isADraw();
-    if (this.isAWin === true) {
+    if (this.isAWin) {
       this.winner = this.turn;
       this.addToPlayerWins();
       this.wins.push(this.winner);
       this.winner.saveWinsToStorage(this.wins);
     }
   }
+
+  retrievedWins() {
+    this.player1.retrieveWinsFromStorage();
+    this.wins.push(parsedWins);
+  }
+
 
   addToPlayerWins() {
     if (this.player1 === this.winner) {
