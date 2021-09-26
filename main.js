@@ -98,12 +98,12 @@ function clearGameData() {
 
 function clearBoard() {
   if (game.draw === true || game.winner === game.player1 || game.winner === game.player2) {
-    setTimeout(emptyBoard, 500);
+    setTimeout(emptyBoard, 1000);
     clearGameData();
   }
 }
 function clearMessage() {
-  winner.innerText = `It's 🎃's' turn!`;
+  winner.innerText = `It's 🎃's turn!`;
 }
 
 function onClickOfbox() {
@@ -115,8 +115,11 @@ function onClickOfbox() {
 }
 
 function updateTurnMessage() {
-  if (game.winner === null) {
-    winner.innerText = `It's ${game.turn.token}'s turn!'`
+  if (game.draw) {
+    winner.innerText = `It's a draw!`
+    setTimeout(clearMessage, 1000);
+  } else if (!game.draw) {
+    winner.innerText = `It's ${game.turn.token}'s turn!`
   }
 }
 
