@@ -19,13 +19,13 @@ class Player {
     if (this.id === 1) {
       var retrievedWins1 = localStorage.getItem("savedWins1");
       var parsedWins1 = JSON.parse(retrievedWins1);
-      console.log(parsedWins1.wins)
       this.wins += parsedWins1.wins;
+      console.log(this.wins)
     } else if (this.id === 2) {
       var retrievedWins2 = localStorage.getItem("savedWins2");
       var parsedWins2 = JSON.parse(retrievedWins2);
-      console.log(parsedWins2.wins)
       this.wins += parsedWins2.wins;
+      console.log(this.wins)
     }
   }
 }

@@ -20,9 +20,14 @@ window.addEventListener('load', onPageLoad);
 gameBoard.addEventListener('click', placeToken);
 
 function onPageLoad() {
+  if (localStorage.getItem("savedWins1") || localStorage.getItem("savedWins2")) {
   game.player1.retrieveWinsFromStorage();
   game.player2.retrieveWinsFromStorage();
+  playerOneWinsDisplayed();
+  playerTwoWinsDisplayed();
 }
+}
+
 
 function placeToken(event) {
   if (event.target.classList.contains('1')) {
@@ -124,18 +129,19 @@ function updateWinnerOnPage() {
   }
 
   function playerOneWinsDisplayed() {
-    if(game.winner.wins) {
-    var sum = 0;
-    for (var i = 0; i < game.winner.wins.length; i++) {
-      sum += game.winner.wins[i];
-      player1Wins.innerText = `${sum} wins`
-    }
-  }
+  player1Wins.innerText = `${game.player1.wins} wins`;
 }
+
+
+function playerTwoWinsDisplayed() {
+  player2Wins.innerText = `${game.player2.wins} wins`;
+}
+
 
   function onClickOfbox() {
     game.checkForWinner();
-    // playerOneWinsDisplayed();
+    playerOneWinsDisplayed();
+    playerTwoWinsDisplayed();
     tokenToBePlaced();
     updateTurnMessage();
     updateWinnerOnPage();
