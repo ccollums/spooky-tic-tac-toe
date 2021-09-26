@@ -2,18 +2,30 @@ class Player {
   constructor(id, token) {
     this.id = id;
     this.token = token;
-    this.wins = [];
-
+    this.wins = 0;
   }
 
   saveWinsToStorage(winner) {
-    // var winsToStore = this.wins;
-    var stringifiedWins = JSON.stringify(winner);
-    localStorage.setItem("savedWins", stringifiedWins);
+    if (this.id === 1) {
+    var stringifiedWinsPlayer1 = JSON.stringify(winner);
+    localStorage.setItem("savedWins1", stringifiedWinsPlayer1);
+  } else if (this.id === 2) {
+    var stringifiedWinsPlayer2 = JSON.stringify(winner);
+    localStorage.setItem("savedWins2", stringifiedWinsPlayer2);
   }
+}
 
   retrieveWinsFromStorage() {
-    var retrievedWins = localStorage.getItem("savedWins");
-    var parsedWins = JSON.parse(retrievedWins);
+    if (this.id === 1) {
+      var retrievedWins1 = localStorage.getItem("savedWins1");
+      var parsedWins1 = JSON.parse(retrievedWins1);
+      console.log(parsedWins1.wins)
+      this.wins += parsedWins1.wins;
+    } else if (this.id === 2) {
+      var retrievedWins2 = localStorage.getItem("savedWins2");
+      var parsedWins2 = JSON.parse(retrievedWins2);
+      console.log(parsedWins2.wins)
+      this.wins += parsedWins2.wins;
+    }
   }
 }

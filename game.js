@@ -6,7 +6,7 @@ class Game {
   this.boardPlayer1 = [];
   this.boardPlayer2 = [];
   this.isAWin = false;
-  this.wins = [];
+  // this.wins = [];
   this.draw = false;
   this.winner = null;
   }
@@ -73,22 +73,15 @@ class Game {
     if (this.isAWin) {
       this.winner = this.turn;
       this.addToPlayerWins();
-      this.wins.push(this.winner);
-      this.winner.saveWinsToStorage(this.wins);
+      this.winner.saveWinsToStorage(this.winner);
     }
   }
 
-  retrievedWins() {
-    this.player1.retrieveWinsFromStorage();
-    this.wins.push(parsedWins);
-  }
-
-
   addToPlayerWins() {
     if (this.player1 === this.winner) {
-      this.player1.wins.push(1);
+      this.player1.wins++;
     } else if (this.player2 === this.winner) {
-      this.player2.wins.push(1);
+      this.player2.wins++;
     }
   }
 

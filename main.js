@@ -12,18 +12,16 @@ var box7 = document.getElementById('boxSeven');
 var box8 = document.getElementById('boxEight');
 var box9 = document.getElementById('boxNine');
 var winner = document.getElementById('winnerMessage');
+var player1Wins = document.getElementById('playerOneWins');
+var player2Wins = document.getElementById('playerTwoWins');
 
 // EventListeners
 window.addEventListener('load', onPageLoad);
 gameBoard.addEventListener('click', placeToken);
 
 function onPageLoad() {
-  var retrievedWins = localStorage.getItem("savedWins");
-  var parsedWins = JSON.parse(retrievedWins);
-  var stringifiedWins = JSON.stringify(parsedWins);
-  localStorage.setItem("savedWins", stringifiedWins);
-
-  // game.wins.push(parsedWins);
+  game.player1.retrieveWinsFromStorage();
+  game.player2.retrieveWinsFromStorage();
 }
 
 function placeToken(event) {
@@ -106,14 +104,6 @@ function clearMessage() {
   winner.innerText = `It's 🎃's turn!`;
 }
 
-function onClickOfbox() {
-  game.checkForWinner();
-  tokenToBePlaced();
-  updateTurnMessage();
-  updateWinnerOnPage();
-  clearBoard();
-}
-
 function updateTurnMessage() {
   if (game.draw) {
     winner.innerText = `It's a draw!`
@@ -131,4 +121,23 @@ function updateWinnerOnPage() {
       winner.innerHTML = `${game.player2.token} won!`;
       setTimeout(clearMessage, 1000);
     }
+  }
+
+  function playerOneWinsDisplayed() {
+    if(game.winner.wins) {
+    var sum = 0;
+    for (var i = 0; i < game.winner.wins.length; i++) {
+      sum += game.winner.wins[i];
+      player1Wins.innerText = `${sum} wins`
+    }
+  }
+}
+
+  function onClickOfbox() {
+    game.checkForWinner();
+    // playerOneWinsDisplayed();
+    tokenToBePlaced();
+    updateTurnMessage();
+    updateWinnerOnPage();
+    clearBoard();
   }
