@@ -74,6 +74,9 @@ function checkForToken() {
   var addToThisBox = event.target.closest('.box');
   if (addToThisBox.innerHTML != '') {
     event.preventDefault();
+  } else if (game.isAWin) {
+    tokenToBePlaced();
+    disableBoxes();
   } else {
     tokenToBePlaced();
   }
@@ -97,9 +100,13 @@ function playerboardToSave(boxNumber) {
   }
 }
 
-function stopAbilityToKeepPlaying() {
-  if (game.winner === game.player1 || game.winner === game.player2) {
-  }
+
+function disableBoxes() {
+  gameBoard.classList.add('disabled');
+}
+
+function enableBoxes() {
+  gameBoard.classList.remove('disabled');
 }
 
 function emptyBoard() {
@@ -112,6 +119,7 @@ function emptyBoard() {
   box7.innerHTML = ``;
   box8.innerHTML = ``;
   box9.innerHTML = ``;
+  enableBoxes();
 }
 
 function clearGameData() {
@@ -125,6 +133,7 @@ function clearGameData() {
 
 function clearBoard() {
   if (game.draw === true || game.winner === game.player1 || game.winner === game.player2) {
+    // disableBoxes();
     setTimeout(emptyBoard, 1000);
     clearGameData();
   }
@@ -165,7 +174,6 @@ function playerTwoWinsDisplayed() {
 
   function onClickOfbox() {
     game.checkForWinner();
-    stopAbilityToKeepPlaying()
     checkForToken();
     playerOneWinsDisplayed();
     playerTwoWinsDisplayed();
