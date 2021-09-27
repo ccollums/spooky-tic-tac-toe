@@ -25,6 +25,16 @@ h2 {
   padding: 0;
 }
 
+button {
+  padding: 1%;
+  margin-bottom: 5%;
+  width: 30%;
+  font-size: 120%;
+  border: 1px solid black;
+  background-color: orange;
+  cursor: pointer;
+}
+
 .winner-message  {
   font-size: 500%;
   margin: 0
