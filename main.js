@@ -14,10 +14,12 @@ var box9 = document.getElementById('boxNine');
 var winner = document.getElementById('winnerMessage');
 var player1Wins = document.getElementById('playerOneWins');
 var player2Wins = document.getElementById('playerTwoWins');
+var button = document.getElementById('clearWinsButton');
 
 // EventListeners
 window.addEventListener('load', onPageLoad);
 gameBoard.addEventListener('click', placeToken);
+button.addEventListener('click', deleteWins);
 
 function onPageLoad() {
   if (localStorage.getItem("savedWins1") || localStorage.getItem("savedWins2")) {
@@ -28,6 +30,14 @@ function onPageLoad() {
 }
 }
 
+function deleteWins() {
+  game.player1.wins = 0;
+  game.player2.wins = 0;
+  localStorage.removeItem('savedWins1');
+  localStorage.removeItem('savedWins2');
+  playerOneWinsDisplayed();
+  playerTwoWinsDisplayed();
+}
 
 function placeToken(event) {
   if (event.target.classList.contains('1')) {
@@ -60,6 +70,15 @@ function placeToken(event) {
   }
 }
 
+function checkForToken() {
+  var addToThisBox = event.target.closest('.box');
+  if (addToThisBox.innerHTML != '') {
+    event.preventDefault();
+  } else {
+    tokenToBePlaced();
+  }
+}
+
 function tokenToBePlaced() {
   var addToThisBox = event.target.closest('.box');
   if (game.turn === game.player1) {
@@ -71,10 +90,15 @@ function tokenToBePlaced() {
 }
 
 function playerboardToSave(boxNumber) {
-  if (game.turn === game.player1) {
+  if (game.turn === game.player1 && !game.boardPlayer2.includes(boxNumber) && !game.boardPlayer1.includes(boxNumber)) {
     game.boardPlayer1.push(boxNumber)
-  } else if (game.turn === game.player2) {
+  } else if (game.turn === game.player2 && !game.boardPlayer1.includes(boxNumber) && !game.boardPlayer2.includes(boxNumber)) {
     game.boardPlayer2.push(boxNumber)
+  }
+}
+
+function stopAbilityToKeepPlaying() {
+  if (game.winner === game.player1 || game.winner === game.player2) {
   }
 }
 
@@ -129,7 +153,7 @@ function updateWinnerOnPage() {
     }
   }
 
-  function playerOneWinsDisplayed() {
+function playerOneWinsDisplayed() {
   player1Wins.innerText = `${game.player1.wins} wins`;
 }
 
@@ -141,9 +165,10 @@ function playerTwoWinsDisplayed() {
 
   function onClickOfbox() {
     game.checkForWinner();
+    stopAbilityToKeepPlaying()
+    checkForToken();
     playerOneWinsDisplayed();
     playerTwoWinsDisplayed();
-    tokenToBePlaced();
     updateTurnMessage();
     updateWinnerOnPage();
     clearBoard();

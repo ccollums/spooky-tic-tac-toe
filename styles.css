@@ -25,6 +25,16 @@ h2 {
   padding: 0;
 }
 
+button {
+  padding: 1%;
+  margin-bottom: 5%;
+  width: 30%;
+  font-size: 120%;
+  border: 1px solid black;
+  background-color: orange;
+  cursor: pointer;
+}
+
 .winner-message  {
   font-size: 500%;
   margin: 0
@@ -72,8 +82,9 @@ h2 {
   justify-content: center;
   align-items: center;
   border: solid 6px black;
-  height: auto:
-  width:auto;
+  height: auto;
+  width: auto;
+  cursor: pointer;
 }
 
 .remove-left-border {
