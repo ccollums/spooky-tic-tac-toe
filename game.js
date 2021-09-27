@@ -6,7 +6,6 @@ class Game {
   this.boardPlayer1 = [];
   this.boardPlayer2 = [];
   this.isAWin = false;
-  // this.wins = [];
   this.draw = false;
   this.winner = null;
   }
@@ -84,5 +83,4 @@ class Game {
       this.player2.wins++;
     }
   }
-
 }

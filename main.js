@@ -105,6 +105,7 @@ function clearBoard() {
     clearGameData();
   }
 }
+
 function clearMessage() {
   winner.innerText = `It's 🎃's turn!`;
 }
