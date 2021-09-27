@@ -9,28 +9,27 @@
     <main>
       <section class='left-side'>
         <h1>🎃</h1>
-        <h2>2 wins</h2>
+        <h2 id='playerOneWins'>0 wins</h2>
       </section>
       <section class='middle'>
         <section>
-          <h1 class='winner-message'>👻 won!</h1>
+          <h1 id=winnerMessage class='winner-message'>It's 🎃's turn!</h1>
         </section>
         <section class ='game-board' id='gameBoard'>
-       <!-- tic tac toe grid -->
-          <div class='box 1 remove-left-border remove-top-border'></div>
-          <div class='box 2 remove-top-border'></div>
-          <div class='box 3 remove-right-border remove-top-border'></div>
-          <div class='box 4 remove-left-border'></div>
-          <div class='box 5'></div>
-          <div class='box 6 remove-right-border'></div>
-          <div class='box 7 remove-left-border remove-bottom-border'></div>
-          <div class='box 8 remove-bottom-border'></div>
-          <div class='box 9 remove-right-border remove-bottom-border'></div>
+          <div id=boxOne class='box 1 remove-left-border remove-top-border'></div>
+          <div id=boxTwo class='box 2 remove-top-border'></div>
+          <div id=boxThree class='box 3 remove-right-border remove-top-border'></div>
+          <div id=boxFour class='box 4 remove-left-border'></div>
+          <div id=boxFive class='box 5'></div>
+          <div id=boxSix class='box 6 remove-right-border'></div>
+          <div id=boxSeven class='box 7 remove-left-border remove-bottom-border'></div>
+          <div id=boxEight class='box 8 remove-bottom-border'></div>
+          <div id=boxNine class='box 9 remove-right-border remove-bottom-border'></div>
         </section>
       </section>
       <section class='right-side'>
         <h1>👻</h1>
-        <h2>3 wins</h2>
+        <h2 id='playerTwoWins'>0 wins</h2>
       </section>
     </main>
     <script type='text/javascript' src='player.js'></script>
