@@ -37,4 +37,4 @@ It is everyone's favorite time of year... SPOOKY SEASON. So why not play a fun g
 - Take turns placing your tokens, the first player to get 3 in a row, horizontally, vertically, or diagonally will win the game.
 - Each players wins will be saved to the left and right of the screen.
 - If you are angry that the other player is kicking your butt in number of wins, feel free to click the clear wins button to have you both start over at zero wins. 
-![Alt Text](http://www.giphy.com/gifs/a0MAvXeHo9SNsgYwqM)
+![Alt Text](https://media.giphy.com/media/a0MAvXeHo9SNsgYwqM/giphy.gif)
