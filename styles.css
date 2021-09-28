@@ -15,11 +15,13 @@ main {
 }
 
 h1 {
-  font-size: 300%;
-  margin: 30% 0 0 0;
-}
-h2 {
   font-size: 500%;
+  margin: 10% 0 0 0;
+}
+
+h2 {
+  font-size: 650%;
+  color: black;
 }
 
 button {
@@ -33,9 +35,11 @@ button {
   width: 30%;
 }
 
-.left-side {
-  background-color: dimgrey;
-  color: white;
+.left-side,
+.right-side {
+  background-image: url(https://i.pinimg.com/originals/0d/1a/37/0d1a37220c938674696fff5b272e1f4d.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,16 +54,6 @@ button {
   align-items: center;
   height: 100vh;
   width: 50vw;
-}
-
-.right-side {
-  background-color: darkorange;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 25vw;
 }
 
 .game-message  {

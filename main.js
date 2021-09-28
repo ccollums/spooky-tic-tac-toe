@@ -132,11 +132,19 @@ function clearMessage() {
 }
 
 function displayPlayerOneWins() {
-  player1Wins.innerText = `${game.player1.wins} wins`;
+  if (game.player1.wins === 1) {
+    player1Wins.innerText = `${game.player1.wins} win`;
+  } else {
+    player1Wins.innerText = `${game.player1.wins} wins`;
+  }
 }
 
 function displayPlayerTwoWins() {
+  if (game.player2.wins === 1) {
+  player2Wins.innerText = `${game.player2.wins} win`;
+  } else {
   player2Wins.innerText = `${game.player2.wins} wins`;
+  }
 }
 
 function clearGameBoard() {
