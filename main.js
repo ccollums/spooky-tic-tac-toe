@@ -31,8 +31,7 @@ function onPageLoad() {
 }
 
 function clearWinsForPlayers() {
-  game.player1.wins = 0;
-  game.player2.wins = 0;
+  game.clearPlayerWins();
   localStorage.removeItem('playerOneSavedWins');
   localStorage.removeItem('playerTwoSavedWins');
   displayPlayerOneWins();

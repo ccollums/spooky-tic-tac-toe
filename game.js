@@ -83,13 +83,18 @@ class Game {
       this.player2.wins++;
     }
   }
-  
+
   clearGameData() {
-    game.turn = game.player1;
-    game.boardPlayer1 = [];
-    game.boardPlayer2 = [];
-    game.isAWin = false;
-    game.draw = false;
-    game.winner = null;
+    this.turn = game.player1;
+    this.boardPlayer1 = [];
+    this.boardPlayer2 = [];
+    this.isAWin = false;
+    this.draw = false;
+    this.winner = null;
+  }
+
+  clearPlayerWins() {
+    this.player1.wins = 0;
+    this.player2.wins = 0;
   }
 }
