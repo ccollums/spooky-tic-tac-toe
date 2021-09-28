@@ -11,95 +11,113 @@ var box6 = document.getElementById('boxSix');
 var box7 = document.getElementById('boxSeven');
 var box8 = document.getElementById('boxEight');
 var box9 = document.getElementById('boxNine');
-var winner = document.getElementById('winnerMessage');
+var gameMessage = document.getElementById('gameMessage');
 var player1Wins = document.getElementById('playerOneWins');
 var player2Wins = document.getElementById('playerTwoWins');
 var button = document.getElementById('clearWinsButton');
 
 // EventListeners
 window.addEventListener('load', onPageLoad);
-gameBoard.addEventListener('click', placeToken);
-button.addEventListener('click', deleteWins);
+gameBoard.addEventListener('click', playGame);
+button.addEventListener('click', clearWinsForPlayers);
 
 function onPageLoad() {
-  if (localStorage.getItem("savedWins1") || localStorage.getItem("savedWins2")) {
-  game.player1.retrieveWinsFromStorage();
-  game.player2.retrieveWinsFromStorage();
-  playerOneWinsDisplayed();
-  playerTwoWinsDisplayed();
-}
+  if (localStorage.getItem("playerOneSavedWins") || localStorage.getItem("playerTwoSavedWins")) {
+    game.player1.retrieveWinsFromStorage();
+    game.player2.retrieveWinsFromStorage();
+    displayPlayerOneWins();
+    displayPlayerTwoWins();
+  }
 }
 
-function deleteWins() {
+function clearWinsForPlayers() {
   game.player1.wins = 0;
   game.player2.wins = 0;
-  localStorage.removeItem('savedWins1');
-  localStorage.removeItem('savedWins2');
-  playerOneWinsDisplayed();
-  playerTwoWinsDisplayed();
+  localStorage.removeItem('playerOneSavedWins');
+  localStorage.removeItem('playerTwoSavedWins');
+  displayPlayerOneWins();
+  displayPlayerTwoWins();
 }
 
-function placeToken(event) {
+function playGame(event) {
   if (event.target.classList.contains('1')) {
-    playerboardToSave(1);
+    saveBoxToPlayerGameBoard(1);
     onClickOfbox();
   } else if (event.target.classList.contains('2')) {
-    playerboardToSave(2);
+    saveBoxToPlayerGameBoard(2);
     onClickOfbox();
   } else if (event.target.classList.contains('3')) {
-    playerboardToSave(3);
+    saveBoxToPlayerGameBoard(3);
     onClickOfbox();
   } else if (event.target.classList.contains('4')) {
-    playerboardToSave(4);
+    saveBoxToPlayerGameBoard(4);
     onClickOfbox();
   } else if (event.target.classList.contains('5')) {
-    playerboardToSave(5);
+    saveBoxToPlayerGameBoard(5);
     onClickOfbox();
   } else if (event.target.classList.contains('6')) {
-    playerboardToSave(6);
+    saveBoxToPlayerGameBoard(6);
     onClickOfbox();
   } else if (event.target.classList.contains('7')) {
-    playerboardToSave(7);
+    saveBoxToPlayerGameBoard(7);
     onClickOfbox();
   } else if (event.target.classList.contains('8')) {
-    playerboardToSave(8);
+    saveBoxToPlayerGameBoard(8);
     onClickOfbox();
   } else if (event.target.classList.contains('9')) {
-    playerboardToSave(9);
+    saveBoxToPlayerGameBoard(9);
     onClickOfbox();
   }
 }
 
-function checkForToken() {
-  var addToThisBox = event.target.closest('.box');
-  if (addToThisBox.innerHTML != '') {
+function checkForExistingToken() {
+  var selectedBox = event.target.closest('.box');
+  if (selectedBox.innerHTML != '') {
     event.preventDefault();
   } else if (game.isAWin) {
-    tokenToBePlaced();
+    assignTokenToBePlaced();
     disableBoxes();
   } else {
-    tokenToBePlaced();
+    assignTokenToBePlaced();
   }
 }
 
-function tokenToBePlaced() {
-  var addToThisBox = event.target.closest('.box');
+function assignTokenToBePlaced() {
+  var selectedBox = event.target.closest('.box');
   if (game.turn === game.player1) {
-    addToThisBox.innerHTML += `<h1 class='token'>🎃</h1>`
+    selectedBox.innerHTML += `<h1 class='token'>🎃</h1>`
   } else if (game.turn === game.player2) {
-    addToThisBox.innerHTML += `<h1 class='token'>👻</h1>`
+    selectedBox.innerHTML += `<h1 class='token'>👻</h1>`
   }
   game.switchTurns();
 }
 
-function playerboardToSave(boxNumber) {
+function updateTurnMessage() {
+  if (game.draw) {
+    gameMessage.innerText = `It's a draw!`
+    setTimeout(clearMessage, 750);
+  } else if (!game.draw) {
+    gameMessage.innerText = `It's ${game.turn.token}'s turn!`
+  }
+}
+
+function updateWinnerOnPage() {
+  if (game.winner === game.player1) {
+      gameMessage.innerText = `${game.player1.token} won!`
+      setTimeout(clearMessage, 750);
+  } else if (game.winner === game.player2) {
+      gameMessage.innerHTML = `${game.player2.token} won!`;
+      setTimeout(clearMessage, 750);
+  }
+}
+
+function saveBoxToPlayerGameBoard(boxNumber) {
   if (game.turn === game.player1 && !game.boardPlayer2.includes(boxNumber) && !game.boardPlayer1.includes(boxNumber)) {
     game.boardPlayer1.push(boxNumber)
   } else if (game.turn === game.player2 && !game.boardPlayer1.includes(boxNumber) && !game.boardPlayer2.includes(boxNumber)) {
     game.boardPlayer2.push(boxNumber)
   }
 }
-
 
 function disableBoxes() {
   gameBoard.classList.add('disabled');
@@ -109,7 +127,34 @@ function enableBoxes() {
   gameBoard.classList.remove('disabled');
 }
 
-function emptyBoard() {
+function clearMessage() {
+  gameMessage.innerText = `It's 🎃's turn!`;
+}
+
+function displayPlayerOneWins() {
+  if (game.player1.wins === 1) {
+    player1Wins.innerText = `${game.player1.wins} win`;
+  } else {
+    player1Wins.innerText = `${game.player1.wins} wins`;
+  }
+}
+
+function displayPlayerTwoWins() {
+  if (game.player2.wins === 1) {
+  player2Wins.innerText = `${game.player2.wins} win`;
+  } else {
+  player2Wins.innerText = `${game.player2.wins} wins`;
+  }
+}
+
+function clearGameBoard() {
+  if (game.draw === true || game.winner === game.player1 || game.winner === game.player2) {
+    setTimeout(emptyGameBoardBoxes, 750);
+    game.clearGameData();
+  }
+}
+
+function emptyGameBoardBoxes() {
   box1.innerHTML = ``;
   box2.innerHTML = ``;
   box3.innerHTML = ``;
@@ -122,62 +167,12 @@ function emptyBoard() {
   enableBoxes();
 }
 
-function clearGameData() {
-  game.turn = game.player1;
-  game.boardPlayer1 = [];
-  game.boardPlayer2 = [];
-  game.isAWin = false;
-  game.draw = false;
-  game.winner = null;
+function onClickOfbox() {
+  game.checkForWinner();
+  checkForExistingToken();
+  displayPlayerOneWins();
+  displayPlayerTwoWins();
+  updateTurnMessage();
+  updateWinnerOnPage();
+  clearGameBoard();
 }
-
-function clearBoard() {
-  if (game.draw === true || game.winner === game.player1 || game.winner === game.player2) {
-    // disableBoxes();
-    setTimeout(emptyBoard, 1000);
-    clearGameData();
-  }
-}
-
-function clearMessage() {
-  winner.innerText = `It's 🎃's turn!`;
-}
-
-function updateTurnMessage() {
-  if (game.draw) {
-    winner.innerText = `It's a draw!`
-    setTimeout(clearMessage, 1000);
-  } else if (!game.draw) {
-    winner.innerText = `It's ${game.turn.token}'s turn!`
-  }
-}
-
-function updateWinnerOnPage() {
-    if (game.winner === game.player1) {
-      winner.innerText = `${game.player1.token} won!`
-      setTimeout(clearMessage, 1000);
-    } else if (game.winner === game.player2) {
-      winner.innerHTML = `${game.player2.token} won!`;
-      setTimeout(clearMessage, 1000);
-    }
-  }
-
-function playerOneWinsDisplayed() {
-  player1Wins.innerText = `${game.player1.wins} wins`;
-}
-
-
-function playerTwoWinsDisplayed() {
-  player2Wins.innerText = `${game.player2.wins} wins`;
-}
-
-
-  function onClickOfbox() {
-    game.checkForWinner();
-    checkForToken();
-    playerOneWinsDisplayed();
-    playerTwoWinsDisplayed();
-    updateTurnMessage();
-    updateWinnerOnPage();
-    clearBoard();
-  }
