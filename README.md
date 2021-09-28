@@ -1,6 +1,6 @@
 # Spooky Tic-Tac-Toe 🎃👻
 
-Play a fun game of tic tac toe spooky addition!
+Play a fun game of tic-tac-toe spooky addition!
 
 ## Authors
 
