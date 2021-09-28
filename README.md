@@ -1,4 +1,4 @@
-# Spooky Tic Tac Toe 🎃👻
+# Spooky Tic-Tac-Toe 🎃👻
 
 Play a fun game of tic tac toe spooky addition!
 
@@ -27,7 +27,7 @@ GitHub repository <a href="https://github.com/ccollums/spooky-tic-tac-toe">link 
 
 ## Description
 
-It is everyone's favorite time of year... SPOOKY SEASON. So why not play a fun game of spooky tic tac toe with a friend.
+It is everyone's favorite time of year... SPOOKY SEASON. So why not play a fun game of spooky tic-tac-toe with a friend.
 
 ## How it works
 
