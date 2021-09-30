@@ -1,13 +1,13 @@
 class Game {
   constructor() {
-  this.player1 = new Player(1, '🎃');
-  this.player2 = new Player(2, '👻');
-  this.turn = this.player1;
-  this.boardPlayer1 = [];
-  this.boardPlayer2 = [];
-  this.isAWin = false;
-  this.draw = false;
-  this.winner = null;
+    this.player1 = new Player(1, '🎃');
+    this.player2 = new Player(2, '👻');
+    this.turn = this.player1;
+    this.boardPlayer1 = [];
+    this.boardPlayer2 = [];
+    this.isAWin = false;
+    this.draw = false;
+    this.winner = null;
   }
 
   switchTurns() {
@@ -20,38 +20,38 @@ class Game {
 
   horizontalWins() {
     if (this.boardPlayer1.includes(1) && this.boardPlayer1.includes(2) && this.boardPlayer1.includes(3) ||
-    this.boardPlayer2.includes(1) && this.boardPlayer2.includes(2) && this.boardPlayer2.includes(3)) {
-    this.isAWin = true;
-  } else if (this.boardPlayer1.includes(4) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(6) ||
-  this.boardPlayer2.includes(4) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(6)) {
-    this.isAWin = true;
-  } else if (this.boardPlayer1.includes(7) && this.boardPlayer1.includes(8) && this.boardPlayer1.includes(9) ||
-  this.boardPlayer2.includes(7) && this.boardPlayer2.includes(8) && this.boardPlayer2.includes(9)) {
-    this.isAWin = true;
-  }
+      this.boardPlayer2.includes(1) && this.boardPlayer2.includes(2) && this.boardPlayer2.includes(3)) {
+      this.isAWin = true;
+    } else if (this.boardPlayer1.includes(4) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(6) ||
+      this.boardPlayer2.includes(4) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(6)) {
+      this.isAWin = true;
+    } else if (this.boardPlayer1.includes(7) && this.boardPlayer1.includes(8) && this.boardPlayer1.includes(9) ||
+      this.boardPlayer2.includes(7) && this.boardPlayer2.includes(8) && this.boardPlayer2.includes(9)) {
+      this.isAWin = true;
+    }
   }
 
   verticalWins() {
     if (this.boardPlayer1.includes(1) && this.boardPlayer1.includes(4) && this.boardPlayer1.includes(7) ||
-    this.boardPlayer2.includes(1) && this.boardPlayer2.includes(4) && this.boardPlayer2.includes(7)) {
-    this.isAWin = true;
-  } else if (this.boardPlayer1.includes(2) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(8) ||
-  this.boardPlayer2.includes(2) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(8)) {
-    this.isAWin = true;
-  } else if (this.boardPlayer1.includes(3) && this.boardPlayer1.includes(6) && this.boardPlayer1.includes(9) ||
-  this.boardPlayer2.includes(3) && this.boardPlayer2.includes(6) && this.boardPlayer2.includes(9)) {
-    this.isAWin = true;
-  }
+      this.boardPlayer2.includes(1) && this.boardPlayer2.includes(4) && this.boardPlayer2.includes(7)) {
+      this.isAWin = true;
+    } else if (this.boardPlayer1.includes(2) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(8) ||
+      this.boardPlayer2.includes(2) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(8)) {
+      this.isAWin = true;
+    } else if (this.boardPlayer1.includes(3) && this.boardPlayer1.includes(6) && this.boardPlayer1.includes(9) ||
+      this.boardPlayer2.includes(3) && this.boardPlayer2.includes(6) && this.boardPlayer2.includes(9)) {
+      this.isAWin = true;
+    }
   }
 
   diagonalWins() {
     if (this.boardPlayer1.includes(1) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(9) ||
-    this.boardPlayer2.includes(1) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(9)) {
-    this.isAWin = true;
-  } else if (this.boardPlayer1.includes(7) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(3) ||
-  this.boardPlayer2.includes(7) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(3)) {
-    this.isAWin = true;
-  }
+      this.boardPlayer2.includes(1) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(9)) {
+      this.isAWin = true;
+    } else if (this.boardPlayer1.includes(7) && this.boardPlayer1.includes(5) && this.boardPlayer1.includes(3) ||
+      this.boardPlayer2.includes(7) && this.boardPlayer2.includes(5) && this.boardPlayer2.includes(3)) {
+      this.isAWin = true;
+    }
   }
 
   winningBoards() {

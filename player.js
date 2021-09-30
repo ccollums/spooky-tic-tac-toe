@@ -7,13 +7,13 @@ class Player {
 
   saveWinsToStorage(winner) {
     if (this.id === 1) {
-    var stringifiedWinsPlayer1 = JSON.stringify(winner);
-    localStorage.setItem("playerOneSavedWins", stringifiedWinsPlayer1);
-  } else if (this.id === 2) {
-    var stringifiedWinsPlayer2 = JSON.stringify(winner);
-    localStorage.setItem("playerTwoSavedWins", stringifiedWinsPlayer2);
+      var stringifiedWinsPlayer1 = JSON.stringify(winner);
+      localStorage.setItem("playerOneSavedWins", stringifiedWinsPlayer1);
+    } else if (this.id === 2) {
+      var stringifiedWinsPlayer2 = JSON.stringify(winner);
+      localStorage.setItem("playerTwoSavedWins", stringifiedWinsPlayer2);
+    }
   }
-}
 
   retrieveWinsFromStorage() {
     if (this.id === 1 && localStorage.getItem("playerOneSavedWins")) {

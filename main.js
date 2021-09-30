@@ -102,11 +102,11 @@ function updateTurnMessage() {
 
 function updateWinnerOnPage() {
   if (game.winner === game.player1) {
-      gameMessage.innerText = `${game.player1.token} won!`
-      setTimeout(clearMessage, 750);
+    gameMessage.innerText = `${game.player1.token} won!`
+    setTimeout(clearMessage, 750);
   } else if (game.winner === game.player2) {
-      gameMessage.innerHTML = `${game.player2.token} won!`;
-      setTimeout(clearMessage, 750);
+    gameMessage.innerHTML = `${game.player2.token} won!`;
+    setTimeout(clearMessage, 750);
   }
 }
 
@@ -140,9 +140,9 @@ function displayPlayerOneWins() {
 
 function displayPlayerTwoWins() {
   if (game.player2.wins === 1) {
-  player2Wins.innerText = `${game.player2.wins} win`;
+    player2Wins.innerText = `${game.player2.wins} win`;
   } else {
-  player2Wins.innerText = `${game.player2.wins} wins`;
+    player2Wins.innerText = `${game.player2.wins} wins`;
   }
 }
 
